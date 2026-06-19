@@ -2,9 +2,9 @@
                
 It is a site that used to track books.
 
-Site link: You can write this link in the browser to view the website:   https://ntwali-creator.github.io/books-and-notes-vault/
+Site link: You can write this link in the browser to view the website:   https://ntwali-creator.github.io/books-notes_vault/
 
-Github repository: https://github.com/Ntwali-creator/books-and-notes-vault
+Github repository: https://github.com/Ntwali-creator/books-notes_vault
 
 
                     FEATURES AND WHAT IT DOES
@@ -37,11 +37,11 @@ Ex: /[0-9]{3,}/ the books with more than 300  pages
                     HOW TO RUN IT
         
 
- Browse this link I provided: https://ntwali-creator.github.io/books-and-notes-vault/
+ Browse this link I provided: https://ntwali-creator.github.io/books-notes_vault/
  
       or use these steps
 
-1. Download all files on my GitHub repository: https://github.com/Ntwali-creator/books-and-notes-vaultt
+1. Download all files on my GitHub repository: https://github.com/Ntwali-creator/books-notes_vault
 
 
 2. Unzip them
@@ -58,9 +58,9 @@ Ex: /[0-9]{3,}/ the books with more than 300  pages
 
 Email: j.ntwali@alustudent.com
 
-GitHub: https://github.com/Ntwali-creator/books-and-notes-vault
+GitHub: https://github.com/Ntwali-creator/books-notes_vault
 
-website: https://ntwali-creator.github.io/books-and-notes-vault/
+website: https://ntwali-creator.github.io/books-notes_vault
 
 
 
