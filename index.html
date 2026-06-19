@@ -1,0 +1,175 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <title> books and notes vault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Books and notes vault </h1>
+        <div class="nav-buttons">
+            <button class="nav-btn" data-page="dashboard">Dashboard</button>
+            <button class="nav-btn" data-page="books">My books</button>
+            <button class="nav-btn" data-page="add">add books</button>
+            <button class="nav-btn" data-page="settings">settings</button>
+            <button class="nav-btn" data-page="about">about</button>
+        </div>
+        <div id="dashboard" class="page">
+            <h2>Dashboard</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div>all books</div>
+                <div class="stat-number" id="totalBooks">0</div>
+            </div>
+            <div class="stat-card">
+                <div>All pages</div>
+                <div class="stat-number" id="totalPages">0</div>
+             </div>
+             <div class="stat-card">
+                <div>the average pages</div>
+                <div class="stat-number" id="avgPages">0</div>
+             </div>
+             <div class="stat-card">
+                <div>top tags</div>
+                <div class="stat-number" id="topTags">0</div>
+             </div>
+        </div>
+        <div class="stat-card">
+             <h3>reading the progress of the goal</h3>
+             <div class="progress-bar">
+                 <div class="progress-fill" id="progressFill" style="width:0%"></div>
+             </div>
+             <div id="goalMessage" role="status" aria-live="polite"></div>
+             <div class="goal-controls">
+                 <input type="number" id="goalInput" value="1000">
+                 <button type="button" onclick="setGoal()">Set Goal</button>
+             </div>
+         </div>
+         <h3>recent added</h3>
+         <div id="recentBooks"></div>
+       </div>
+       <div id="books" class="page">
+           <h2>the books collections</h2>
+           <div class="search-sort">
+               <div class="searchbox">
+                   <label>the regex search:</label>
+                   <input type="text" id="searchInput" placeholder="Try: /james|ntwali/ or /[0-9]{3,}/">
+               </div>
+               <div class="sort-box">
+                   <label> sort by:</label>
+                   <select id="sortSelect">
+                       <option value="date">date</option>
+                       <option value="pages">pages</option>
+                       <option value="title">title</option>
+                   </select>
+               </div>
+          </div>
+          <div class="table-wrapper">
+              <table>
+                  <thead>
+                      <tr>
+                        <th>title</th>
+                        <th>author</th>
+                        <th>pages</th>
+                        <th>tag</th>
+                        <th>date</th>
+                        <th>actions</th>
+                        </tr>
+                  </thead>
+                  <tbody id="bookTableBody"></tbody>
+              </table>
+          </div>
+          <div class="action-buttons">
+              <button onclick="exportData()"> export JSON</button>
+              <input type="file" id="importFile" accept=".json" style="display:none">
+              <button onclick="document.getElementById('importFile').click()"> import the json</button>
+              <button onclick="loadSampleData()"> load</button>
+          </div>
+       </div>
+       <div id="add" class="page">
+           <h2 id="formTitle">add the new book</h2>
+           <form id="bookForm">
+               <input type="hidden" id="bookid">
+               <div class="form-group">
+                <label for="title">title *</label>
+                   <input type="text" id="title" required>
+                   <div class="error" id="titleError"></div>
+               </div>
+               <div class="form-group">
+                   <label for="author">author </label>
+                   <input type="text" id="author" required>
+                   <div class="error" id="authorError"></div>
+               </div>
+               <div class="form-group">
+                   <label for="pages">pages </label>
+                   <input type="text" id="pages" required>
+                   <div class="error" id="pagesError"></div>
+               </div>
+               <div class="form-group">
+                   <label for="tag">Tags </label>
+                   <select id="tag">
+                       <option>fiction</option>
+                       <option>non fiction</option>
+                       <option>academic</option>
+                       <option>self help</option>
+                       <option>others</option>
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label>added date </label>
+                   <input type="date" id="date" required>
+                   </div>
+               <div class="form-buttons">
+                   <button type="submit">save the book</button>
+                   <button type="button" onclick="cancelEdit()">cancel</button>
+               </div>
+           </form>
+         </div>
+         <div id="settings"class="page">
+             <h2>settings</h2>
+             <div class="stat-card">
+                 <h3>the unit conversion</h3>
+                 <p>1 hour = 50 pages (the average reading spead)</p>
+                 <div class="converter">
+                      <input type="number" id="pagesConvert" placeholder="Enter pages">
+                    <button onclick="convertToHours()">convert into hours</button>
+                    <span id="hoursResult"></span>
+                </div>
+                <div class="converter">
+                    <input type="number" id="hoursConvert" placeholder="Enter hours">
+                    <button onclick="convertToPages()">Convert to Pages</button>
+                    <span id="pagesResult"></span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>themes</h3>
+                <button onclick="toggleDarkMode()">the dark mode</button>
+            </div>
+            <div class="stat-card">
+                <h3>datas management</h3>
+                <button onclick="clearAllData()" class="danger-btn">delete all the pages</button>
+            </div>
+        </div>
+        <div id="about" class="page">
+            <h2>about the books vault</h2>
+            <div class="stat-card">
+                <h3>the regex pattern you can try to use</h3>
+                <ul>
+                    <li><code>/^the/</code> - books starting with "The"</li>
+                    <li><code>/james|ntwali/i</code> - find the book of james ntwali</li>
+                    <li><code>/[0-9]{3,}/</code> - the book is like 300+ pages</li>
+                    <li><code>/\b\w{7,}\b/</code> - the long titles 8+ letters</li>
+                </ul>
+                <h3>contacts</h3>
+                <p>email: j.ntwali@alustudent.com<br>GitHub: github.com/Ntwali-creator</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
