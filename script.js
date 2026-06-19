@@ -186,11 +186,11 @@ function setupSearch() {
             return;
         }
         try {
-            let cleanPattern = pattern.replace(/\//g, "");
+            let cleanPattern = pattern.replace(/\//g, "").trim();
             let regex = new RegExp(cleanPattern, "i");
             let filtered = [];
             for (let i = 0; i < books.length; i++) {
-                let text = books[i].title + " " + books[i].author + " " + books[i].pages;
+                let text = books[i].title + " " + books[i].author + " " + books[i].pages + " " + books[i].tag;
                 if (regex.test(text)) {
                     filtered.push(books[i]);
                 }
